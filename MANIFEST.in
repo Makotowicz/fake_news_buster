@@ -1,0 +1,3 @@
+graft fake_news_buster
+global-exclude *.py[cod] __pycache__ *.so *.ipynb
+recursive-exclude  fake_news_buster/jupy *
