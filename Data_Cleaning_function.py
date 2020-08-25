@@ -28,24 +28,20 @@ def try_parsing_date(text):
     return np.nan
 
 
-def Data_Cleaning():
+def Data_Cleaning(df_1, df_2):
     '''Delete useless rows (with https..in every column)
         and adjust datetime object'''
 
     #Call merge/import function
-    data_concat_reset_index = import_merge_df("Fake.csv","True.csv")
+    data_concat_reset_index = import_merge_df(df_1,df_2)
 
 
     #Filter out wrong "https"-values
-    list_indexes_to_drop = data_2.query('date.str.contains("https")').index
-    data = data_concat_reset_index.drop(data_2.index[list_indexes_to_drop])
+    list_indexes_to_drop = data_concat_reset_index.query('date.str.contains("https")').index
+    data = data_concat_reset_index.drop(data_concat_reset_index.index[list_indexes_to_drop])
 
     #Convert date to datetimeobjects
     data["date"] = data["date"].map(try_parsing_date)
 
     return data
-
-
-
-
 
