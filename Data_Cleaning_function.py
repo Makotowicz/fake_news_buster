@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 def import_merge_df(df_1,df_2):
     '''Import DataFrames and merge them, adding true/false encodings'''
@@ -44,4 +46,19 @@ def Data_Cleaning(df_1, df_2):
     data["date"] = data["date"].map(try_parsing_date)
 
     return data
+
+
+def Drop_words_helper_fct(x, word_list):
+    for word in word_list:
+        x = x.replace(word, "")
+    return x
+
+
+def Drop_words(df, column_name, word_list):
+    new_column_name = f'cleaned_{column_name}'
+    df[new_column_name] = df[column_name].apply(lambda x: Drop_words_helper_fct(x,word_list))
+
+
+
+
 
