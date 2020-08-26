@@ -5,19 +5,19 @@ import pandas as pd
 from datetime import datetime
 import numpy as np
 
-def import_merge_df(df_1_path,df_2_path):
+def import_merge_df(df_1_path_fake,df_2_path_true):
 
     '''Import DataFrames and merge them, adding true/false encodings'''
 
-    data_fake = pd.read_csv(df_1_path)
-    data_true = pd.read_csv(df_2_path)
+    data_fake = pd.read_csv(df_1_path_fake)
+    data_true = pd.read_csv(df_2_path_true)
 
     # data_fake = pd.read_csv(df_1)
     # data_true = pd.read_csv(df_2)
 
 
     data_fake["true/false"] = 1
-    data_fake["true/false_description"] = "false"
+    data_fake["true/false_description"] = "fake"
 
     data_true["true/false"] = 0
     data_true["true/false_description"] = "true"
@@ -39,12 +39,12 @@ def try_parsing_date(text):
     return np.nan
 
 
-def Data_Cleaning(df_1_path, df_2_path):
+def Data_Cleaning(df_1_path_fake, df_2_path_true):
     '''Delete useless rows (with https..in every column)
         and adjust datetime object'''
 
     #Call merge/import function
-    data_concat_reset_index = import_merge_df(df_1_path,df_2_path)
+    data_concat_reset_index = import_merge_df(df_1_path_fake,df_2_path_true)
 
 
     #Filter out wrong "https"-values
