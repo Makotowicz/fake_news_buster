@@ -94,7 +94,6 @@ matplotlib==3.2.2
 mccabe==0.6.1
 missingno==0.4.2
 mistune==0.8.4
-mlproject @ file:///C:/Users/Brigitta%20Bartsch/code/BrigittaB/data-challenges/07-Data-Engineering/01-Code-as-a-Product/mlproject
 more-itertools==8.4.0
 msgpack==1.0.0
 msgpack-numpy==0.4.6.1
