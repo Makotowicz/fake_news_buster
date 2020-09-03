@@ -26,16 +26,49 @@ def try_parsing_date(text):
 
 '''weekday one hot encoded'''
 
+# def weekday(day):
+#     weekday = day.dt.day_name()
+#     return weekday
 def weekday(day):
-    weekday = day.dt.day_name()
+    weekday = day.dt.day_name()   ###deleted dt. in between day.dt.day_name()
     return weekday
 
+# def ohe_weekday(df):
+#     ohe = OneHotEncoder(sparse = False)
+#     ohe.fit(df[['weekday']])
+#     hair_length_oh = ohe.transform(df[['weekday']])
+#     df["day_friday"],df["day_monday"],df['day_saturday'],df['day_sunday'],df['day_thursday'],df['day_tuesday'],df['day_wednesday'] = hair_length_oh.T
+#     return df
+
 def ohe_weekday(df):
-    ohe = OneHotEncoder(sparse = False)
-    ohe.fit(df[['weekday']])
-    hair_length_oh = ohe.transform(df[['weekday']])
-    df["day_friday"],df["day_monday"],df['day_saturday'],df['day_sunday'],df['day_thursday'],df['day_tuesday'],df['day_wednesday'] = hair_length_oh.T
-    return df
+    if weekday(day) == "Saturday":
+        df_2 = pd.DataFrame({"day_friday": 0,"day_monday":0, "day_saturday":1, "day_sunday":0, "day_thursday":0, "day_tuesday":0,"day_wednesday":0   }, index=np.arange(1))
+        df = pd.concat([df,df_2], axis=1)
+        return df
+    elif weekday(day) == "Friday":
+        df_2 = pd.DataFrame({"day_friday": 1,"day_monday":0, "day_saturday":0, "day_sunday":0, "day_thursday":0, "day_tuesday":0,"day_wednesday":0   }, index=np.arange(1))
+        df = pd.concat([df,df_2], axis=1)
+        return df
+    elif weekday(day) == "Monday":
+        df_2 = pd.DataFrame({"day_friday": 0,"day_monday":1, "day_saturday":0, "day_sunday":0, "day_thursday":0, "day_tuesday":0,"day_wednesday":0   }, index=np.arange(1))
+        df = pd.concat([df,df_2], axis=1)
+        return df
+    elif weekday(day) == "Sunday":
+        df_2 = pd.DataFrame({"day_friday": 0,"day_monday":0, "day_saturday":0, "day_sunday":1, "day_thursday":0, "day_tuesday":0,"day_wednesday":0   }, index=np.arange(1))
+        df = pd.concat([df,df_2], axis=1)
+        return df
+    elif weekday(day) == "Thursday":
+        df_2 = pd.DataFrame({"day_friday": 0,"day_monday":0, "day_saturday":0, "day_sunday":0, "day_thursday":1, "day_tuesday":0,"day_wednesday":0   }, index=np.arange(1))
+        df = pd.concat([df,df_2], axis=1)
+        return df
+    elif weekday(day) == "Tuesday":
+        df_2 = pd.DataFrame({"day_friday": 0,"day_monday":0, "day_saturday":0, "day_sunday":0, "day_thursday":0, "day_tuesday":1,"day_wednesday":0   }, index=np.arange(1))
+        df = pd.concat([df,df_2], axis=1)
+        return df
+    else:
+        df_2 = pd.DataFrame({"day_friday": 0,"day_monday":0, "day_saturday":0, "day_sunday":0, "day_thursday":0, "day_tuesday":0,"day_wednesday":1   }, index=np.arange(1))
+        df = pd.concat([df,df_2], axis=1)
+        return df
 
 '''sentiment analysis _ 1'''
 
@@ -181,8 +214,8 @@ def scaler(df):
 
 def final_call(df):
 
-  '''data cleaning'''
-  df["date"] = df["date"].apply(try_parsing_date)
+  # '''data cleaning'''
+  # df["date"] = df["date"].apply(try_parsing_date)
 
   '''weekday'''
   df['weekday'] = df[['date']].apply(weekday)
