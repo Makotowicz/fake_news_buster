@@ -109,7 +109,7 @@ oauthlib==3.1.0
 opt-einsum==3.3.0
 packaging==20.4
 pandas==0.24.2
-pandas-profiling==2.8.0
+
 pandocfilters==1.4.2
 parso==0.7.0
 pathtools==0.1.2
@@ -185,7 +185,6 @@ tzlocal==2.1
 Unidecode==1.1.1
 urllib3==1.25.9
 validators==0.18.0
-visions==0.4.4
 wagon-tools==1.1.2
 wasabi==0.7.1
 watchdog==0.10.3
