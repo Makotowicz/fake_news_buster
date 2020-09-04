@@ -8,7 +8,6 @@ atomicwrites==1.4.0
 attrs==19.3.0
 backcall==0.2.0
 base58==2.0.1
-beautifulsoup4==4.9.1
 bleach==3.1.5
 blinker==1.4
 blis==0.4.1
@@ -38,8 +37,6 @@ docutils==0.15.2
 entrypoints==0.3
 enum-compat==0.0.3
 ephem==3.7.7.1
-Flask==1.1.2
-Flask-Cors==3.0.8
 folium==0.11.0
 fsspec==0.8.0
 ftfy==5.8
@@ -80,8 +77,6 @@ jupyter-latex-envs==1.4.6
 jupyter-nbextensions-configurator==0.4.1
 jupyterlab==2.1.5
 jupyterlab-server==1.2.0
-Keras-Applications==1.0.8
-Keras-Preprocessing==1.1.2
 kiwisolver==1.2.0
 korean-lunar-calendar==0.2.1
 lazy-object-proxy==1.4.3
@@ -163,10 +158,6 @@ srsly==1.0.2
 statsmodels==0.11.1
 streamlit==0.65.2
 tangled-up-in-unicode==0.0.6
-tensorboard==2.0.2
-tensorboard-plugin-wit==1.7.0
-tensorflow==2.0.0
-tensorflow-estimator==2.0.1
 termcolor==1.1.0
 terminado==0.8.3
 testpath==0.4.4
